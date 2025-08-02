@@ -55,7 +55,8 @@ show_tuic_node_info() {
     echo
 
     # 生成分享链接（请根据实际 TUIC 协议格式调整）
-    TUIC_LINK="tuic://${TUIC_UUID}:${TUIC_PASSWORD}@${SERVER_ADDRESS}:${LISTEN_PORT}?alpn=h3&sni=${SNI_DOMAIN}#${NODE_TAG}"
+
+    TUIC_LINK="tuic://${TUIC_UUID}:${TUIC_PASSWORD}@${SERVER_ADDRESS}:${LISTEN_PORT}?congestion_control=bbr&alpn=h3&sni=${SNI_DOMAIN}&udp_relay_mode=native&allow_insecure=1#${NODE_TAG}"
 
     print_info "TUIC 分享链接"
     echo -e "${GREEN}$TUIC_LINK${NC}"
