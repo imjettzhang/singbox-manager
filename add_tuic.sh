@@ -82,7 +82,7 @@ show_tuic_node_info() {
   reduce-rtt: true
   heartbeat-interval: 10000ms
   skip-cert-verify: true
-  sni: $DOMAIN
+  sni: $SNI_DOMAIN
 EOF
     echo
     print_warning "请注意放行端口${LISTEN_PORT}，否则无法连接"
