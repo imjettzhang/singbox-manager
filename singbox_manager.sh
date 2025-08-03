@@ -284,6 +284,13 @@ enable_service() {
 
 # 完整卸载 singbox 的函数
 uninstall_singbox_full() {
+    read -p "确定要卸载 gost 吗？(y/N): " confirm
+    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+        echo "已取消卸载。"
+        read -p "按回车返回主菜单..."
+        main_menu
+        return
+    fi
     print_info "停止并禁用 sing-box 服务..."
     sudo systemctl stop sing-box 2>/dev/null || true
     sudo systemctl disable sing-box 2>/dev/null || true
