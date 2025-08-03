@@ -153,6 +153,9 @@ install_singbox() {
     fi
     print_success "sing-box 1.11.15 安装完成"
     
+    # 启用 BBR
+    enable_bbr
+    
     # 安装完毕后，删除原有配置文件再初始化
     if [ -f "$CONFIG_FILE" ]; then
         print_info "检测到默认配置文件，已删除: $CONFIG_FILE"

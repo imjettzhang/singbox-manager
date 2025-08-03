@@ -21,6 +21,31 @@ print_title() {
 
 
 
+# 启用 BBR
+function enable_bbr() {
+    print_info "正在检查是否已开启 BBR..."
+    if lsmod | grep -q bbr && sysctl net.ipv4.tcp_congestion_control | grep -q bbr; then
+        print_success "BBR 已启用！"
+        return 0
+    else
+        print_error "未检测到 BBR，开始配置..."
+    fi
+
+    sudo tee -a /etc/sysctl.conf > /dev/null <<EOF
+net.core.default_qdisc=fq
+net.ipv4.tcp_congestion_control=bbr
+EOF
+
+    sudo sysctl -p
+
+    if lsmod | grep -q bbr && sysctl net.ipv4.tcp_congestion_control | grep -q bbr; then
+        print_success "BBR 已成功启用！"
+    else
+        print_error "BBR 启用失败，请检查内核版本是否 >= 4.9"
+    fi
+}
+
+
 # 检查端口是否已被配置使用
 check_port_in_config() {
     local port="$1"
