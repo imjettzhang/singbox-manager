@@ -284,7 +284,7 @@ enable_service() {
 
 # 完整卸载 singbox 的函数
 uninstall_singbox_full() {
-    read -p "确定要卸载 gost 吗？(y/N): " confirm
+    read -p "确定要卸载 sing-box 以及相关配置吗？(y/N): " confirm
     if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
         echo "已取消卸载。"
         read -p "按回车返回主菜单..."
