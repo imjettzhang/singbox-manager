@@ -10,20 +10,20 @@ source "$SCRIPT_DIR/common.sh"
 select_ws_host_and_path() {
     echo "请选择 WebSocket Host："
     echo "1) www.bing.com (默认)"
-    echo "2) www.yahoo.com"
-    echo "3) www.paypal.com"
+    echo "2) www.heroku.com"
+    echo "3) www.harvard.edu"
     echo "4) aws.amazon.com" 
     read -p "请选择 [1-4]: " ws_host_choice
 
     case "$ws_host_choice" in
-        2) WS_HOST="www.yahoo.com" ;;
-        3) WS_HOST="www.paypal.com" ;;
+        2) WS_HOST="www.heroku.com" ;;
+        3) WS_HOST="www.harvard.edu" ;;
         4) WS_HOST="aws.amazon.com" ;;
         *) WS_HOST="www.bing.com" ;;
     esac
 
     # 生成随机路径
-    WS_PATH="/$(sing-box generate rand 8 --hex)"
+    WS_PATH="/$(sing-box generate rand 4 --hex)"
     echo "已生成随机 WebSocket 路径: $WS_PATH"
 }
 
