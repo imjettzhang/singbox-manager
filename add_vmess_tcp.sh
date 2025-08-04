@@ -7,30 +7,31 @@ source "$SCRIPT_DIR/common.sh"
 # VMESS TCP专用函数
 
 # 选择 WebSocket Host 和路径
-select_ws_host_and_path() {
-    echo "请选择 WebSocket Host："
-    echo "1) www.bing.com (默认)"
-    echo "2) www.yahoo.com"
-    echo "3) www.paypal.com"
-    echo "4) aws.amazon.com" 
-    read -p "请选择 [1-4]: " ws_host_choice
+# select_ws_host_and_path() {
+#     echo "请选择 WebSocket Host："
+#     echo "1) download.windowsupdate.com (默认)"
+#     echo "2) www.yahoo.com"
+#     echo "3) www.paypal.com"
+#     echo "4) aws.amazon.com" 
+#     read -p "请选择 [1-4]: " ws_host_choice
 
-    case "$ws_host_choice" in
-        2) WS_HOST="www.yahoo.com" ;;
-        3) WS_HOST="www.paypal.com" ;;
-        4) WS_HOST="aws.amazon.com" ;;
-        *) WS_HOST="www.bing.com" ;;
-    esac
+#     case "$ws_host_choice" in
+#         2) WS_HOST="www.yahoo.com" ;;
+#         3) WS_HOST="www.paypal.com" ;;
+#         4) WS_HOST="aws.amazon.com" ;;
+#         *) WS_HOST="www.bing.com" ;;
+#     esac
 
-    # 生成随机路径
-    WS_PATH="/$(sing-box generate rand 8 --hex)"
-    echo "已生成随机 WebSocket 路径: $WS_PATH"
-}
+#     # 生成随机路径
+#     WS_PATH="/$(sing-box generate rand 8 --hex)"
+#     echo "已生成随机 WebSocket 路径: $WS_PATH"
+# }
 
 # 创建 VMESS TCP 节点配置
 create_vmess_json() {
     print_info "生成节点配置..."
-
+    WS_HOST="download.windowsupdate.com"
+    WS_PATH="/download"
     # 生成UUID
     UUID=$(sing-box generate uuid)
     print_info "生成UUID: $UUID"
@@ -50,7 +51,7 @@ create_vmess_json() {
     }
   ],
   "transport": {
-    "type": "tcp",
+    "type": "ws",
     "path": "$WS_PATH",
     "headers": {
       "Host": "$WS_HOST"
@@ -80,7 +81,7 @@ show_vmess_node_info() {
   "port": "$LISTEN_PORT",
   "id": "$UUID",
   "aid": "0",
-  "net": "tcp",
+  "net": "ws",
   "type": "none",
   "host": "$WS_HOST",
   "path": "$WS_PATH",
@@ -99,7 +100,6 @@ EOF
 
 # 主流程
 add_vmess_tcp() {
-    select_ws_host_and_path
     select_port
     get_local_ip
     create_vmess_json
