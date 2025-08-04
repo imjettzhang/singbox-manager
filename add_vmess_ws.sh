@@ -4,7 +4,7 @@
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 source "$SCRIPT_DIR/common.sh"
 
-# VMESS TCP专用函数
+# VMESS WS专用函数
 
 # 选择 WebSocket Host 和路径
 select_ws_host_and_path() {

@@ -9,7 +9,7 @@ source "$SCRIPT_DIR/add_tuic.sh"
 source "$SCRIPT_DIR/add_http.sh"
 source "$SCRIPT_DIR/add_socks5.sh"
 source "$SCRIPT_DIR/add_trojan.sh"
-source "$SCRIPT_DIR/add_vmess_tcp.sh"
+source "$SCRIPT_DIR/add_vmess_ws.sh"
 source "$SCRIPT_DIR/common.sh"
 
 
@@ -103,7 +103,7 @@ function add_node_menu() {
         5) add_http ;;
         6) add_socks5 ;;
         7) add_trojan ;;
-        8) add_vmess_tcp ;;
+        8) add_vmess_ws ;;
         0) manage_singbox ;;
         *) echo "无效选择"; read -p "按回车继续..."; add_node_menu ;;
     esac
@@ -474,18 +474,11 @@ function add_socks5() {
 
 #添加trojan节点
 function add_trojan() {
-    select_sni
-    select_port
-    get_local_ip
-    create_trojan_config
-    add_node_to_config "$TROJAN_CONFIG"
-    validate_config_json
-    restart_singbox_service
-    show_trojan_node_info
+    echo "暂未实现"
     read -p "按回车返回..."; add_node_menu; }
 
 #添加vmess-tcp节点
-function add_vmess_tcp() {
+function add_vmess_ws() {
     select_ws_host_and_path
     select_port
     get_local_ip
