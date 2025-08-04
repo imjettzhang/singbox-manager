@@ -50,7 +50,7 @@ create_vmess_json() {
     }
   ],
   "transport": {
-    "type": "ws",
+    "type": "tcp",
     "path": "$WS_PATH",
     "headers": {
       "Host": "$WS_HOST"
