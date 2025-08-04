@@ -23,7 +23,7 @@ select_ws_host_and_path() {
     esac
 
     # 生成随机路径
-    WS_PATH="/$(sing-box generate rand 4 --hex)"
+    WS_PATH="/$(sing-box generate rand 2 --hex)"
     echo "已生成随机 WebSocket 路径: $WS_PATH"
 }
 
