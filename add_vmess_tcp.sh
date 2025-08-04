@@ -24,12 +24,16 @@ select_ws_host_and_path() {
 
     # 生成随机路径
     WS_PATH="/$(sing-box generate rand 8 --hex)"
-    print_info "已生成随机 WebSocket 路径: $WS_PATH"
+    echo "已生成随机 WebSocket 路径: $WS_PATH"
 }
 
 # 创建 VMESS TCP 节点配置
 create_vmess_json() {
     print_info "生成节点配置..."
+
+    # 生成UUID
+    UUID=$(sing-box generate uuid)
+    print_info "生成UUID: $UUID"
 
     NODE_TAG="vmess-${LISTEN_PORT}"
 
