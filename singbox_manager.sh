@@ -472,6 +472,29 @@ function add_socks5() {
     show_socks5_node_info
     read -p "按回车返回..."; add_node_menu; }
 
+#添加trojan节点
+function add_trojan() {
+    select_sni
+    select_port
+    get_local_ip
+    create_trojan_config
+    add_node_to_config "$TROJAN_CONFIG"
+    validate_config_json
+    restart_singbox_service
+    show_trojan_node_info
+    read -p "按回车返回..."; add_node_menu; }
+
+#添加vmess-tcp节点
+function add_vmess_tcp() {
+    select_ws_host_and_path
+    select_port
+    get_local_ip
+    create_vmess_json
+    add_node_to_config "$VMESS_CONFIG"
+    validate_config_json
+    restart_singbox_service
+    show_vmess_node_info
+    read -p "按回车返回..."; add_node_menu; }
 
 delete_node() {
     print_title "删除 sing-box 节点"
