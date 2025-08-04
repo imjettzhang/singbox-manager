@@ -80,7 +80,7 @@ show_vmess_node_info() {
   "port": "$LISTEN_PORT",
   "id": "$UUID",
   "aid": "0",
-  "net": "ws",
+  "net": "tcp",
   "type": "none",
   "host": "$WS_HOST",
   "path": "$WS_PATH",
