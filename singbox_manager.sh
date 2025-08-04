@@ -8,6 +8,8 @@ source "$SCRIPT_DIR/add_hysteria2.sh"
 source "$SCRIPT_DIR/add_tuic.sh"
 source "$SCRIPT_DIR/add_http.sh"
 source "$SCRIPT_DIR/add_socks5.sh"
+source "$SCRIPT_DIR/add_trojan.sh"
+source "$SCRIPT_DIR/add_vmess_tcp.sh"
 source "$SCRIPT_DIR/common.sh"
 
 
@@ -98,6 +100,8 @@ function add_node_menu() {
         4) add_tuic ;;
         5) add_http ;;
         6) add_socks5 ;;
+        7) add_trojan ;;
+        8) add_vmess_tcp ;;
         0) manage_singbox ;;
         *) echo "无效选择"; read -p "按回车继续..."; add_node_menu ;;
     esac
