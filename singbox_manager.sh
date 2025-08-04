@@ -88,6 +88,8 @@ function add_node_menu() {
     echo "4. TUIC"
     echo "5. HTTP"
     echo "6. SOCKS5"
+    echo "7. Trojan"
+    echo "8. VMESS TCP"
     echo "0. 返回上级菜单"
     read -p "请选择节点类型: " choice
     if [[ -z "$choice" ]]; then
