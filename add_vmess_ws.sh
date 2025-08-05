@@ -10,13 +10,11 @@ source "$SCRIPT_DIR/common.sh"
 select_ws_host_and_path() {
     echo "请选择 WebSocket Host："
     echo "1) www.bing.com (默认)"
-    echo "2) www.tinychat.com"
     echo "3) www.cyph.com"
     echo "4) aws.amazon.com" 
     read -p "请选择 [1-4]: " ws_host_choice
 
     case "$ws_host_choice" in
-        2) WS_HOST="www.tinychat.com" ;;
         3) WS_HOST="www.cyph.com" ;;
         4) WS_HOST="aws.amazon.com" ;;
         *) WS_HOST="www.bing.com" ;;
