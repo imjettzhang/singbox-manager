@@ -11,13 +11,13 @@ select_ws_host_and_path() {
     echo "请选择 WebSocket Host："
     echo "1) www.bing.com (默认)"
     echo "2) www.heroku.com"
-    echo "3) www.harvard.edu"
+    echo "3) www.parler.com"
     echo "4) aws.amazon.com" 
     read -p "请选择 [1-4]: " ws_host_choice
 
     case "$ws_host_choice" in
         2) WS_HOST="www.heroku.com" ;;
-        3) WS_HOST="www.harvard.edu" ;;
+        3) WS_HOST="www.parler.com" ;;
         4) WS_HOST="aws.amazon.com" ;;
         *) WS_HOST="www.bing.com" ;;
     esac
