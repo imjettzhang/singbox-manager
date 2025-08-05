@@ -12,11 +12,12 @@ select_ws_host_and_path() {
     echo "1) www.bing.com (默认)"
     echo "2) www.cyph.com"
     echo "3) aws.amazon.com" 
-    read -p "请选择 [1-4]: " ws_host_choice
+    read -p "请选择 [1-3]: " ws_host_choice
 
     case "$ws_host_choice" in
-        1) WS_HOST="www.cyph.com" ;;
-        2) WS_HOST="aws.amazon.com" ;;
+        1) WS_HOST="www.bing.com" ;;
+        2) WS_HOST="www.cyph.com" ;;
+        3) WS_HOST="aws.amazon.com" ;;
         *) WS_HOST="www.bing.com" ;;
     esac
 
