@@ -89,18 +89,18 @@ show_vmess_node_info() {
 EOF
 )
     # base64 编码
-    local vmess_link="vmess://$(echo -n "$vmess_json" | base64 -w 0)"
+    local VMESS_LINK="vmess://$(echo -n "$vmess_json" | base64 -w 0)"
 
     print_info "VMess 分享链接"
-    echo -e "${GREEN}$vmess_link${NC}"
+    echo -e "${GREEN}$VMESS_LINK${NC}"
     echo
     print_warning "请注意放行端口${LISTEN_PORT}，否则无法连接"
 
     # 保存节点URL到 node_url.json
     NODE_URL_FILE="/etc/sing-box/node_url/nodes.json"
-    if [ -n "$VLESS_LINK" ]; then
+    if [ -n "$VMESS_LINK" ]; then
         tmp_url_file=$(mktemp)
-        sudo jq --arg tag "$NODE_TAG" --arg url "$VLESS_LINK" '. + {($tag): $url}' "$NODE_URL_FILE" > "$tmp_url_file" && \
+        sudo jq --arg tag "$NODE_TAG" --arg url "$VMESS_LINK" '. + {($tag): $url}' "$NODE_URL_FILE" > "$tmp_url_file" && \
             sudo mv "$tmp_url_file" "$NODE_URL_FILE"
         print_success "节点URL已保存到: $NODE_URL_FILE"
     fi
