@@ -1,5 +1,4 @@
 # 编辑器和IDE
-.vscode/
 .idea/
 *.swp
 *.swo
