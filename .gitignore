@@ -1,0 +1,43 @@
+# 编辑器和IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# 配置文件（可能包含敏感信息）
+config.json
+*.conf
+!*.conf.example
+
+# 证书和密钥
+*.pem
+*.key
+*.crt
+*.p12
+
+# Sing-box 相关
+sing-box
+sing-box.db
+sing-box.db-*
+cache/
+
+# 环境变量
+.env
+.env.local
+.env.*.local
